@@ -25,7 +25,7 @@
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/ipv6-check.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/iot-admin.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/ipv6-check.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <maxFileSize>100MB</maxFileSize>
         </rollingPolicy>
         <encoder>

@@ -34,11 +34,11 @@ public class Ipv6CheckJobHandler implements IJob<Void> {
         String osName = System.getProperty("os.name");
         log.info("当前操作系统为：{}", osName);
 
+        // 2. 执行命令查询 ipv6 地址
         CommandResult commandResult;
         if (osName.contains("Windows")) {
             commandResult = CommandExecUtils.executeCommand("ipconfig", "|", "findstr", "IPv6");
         } else if (osName.contains("Linux")) {
-            // 2. ip -6 addr | grep inet6 | awk -F '[ \t]+|/' '$3 == "::1" { next;} $3 ~ /^fe80::/ { next;} /inet6/ {print $3}'
             commandResult = CommandExecUtils.executeCommand("ip -6 addr | grep inet6 | awk -F '[ \\t]+|/' '$3 == \"::1\" { next;} $3 ~ /^fe80::/ { next;} /inet6/ {print $3}'");
         } else {
             log.warn("未知的操作系统:{}，暂不支持", osName);
