@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: ipv6-check
+    profiles:
+        active: prod #默认为开发环境
