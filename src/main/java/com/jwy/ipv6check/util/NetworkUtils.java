@@ -9,13 +9,14 @@ public class NetworkUtils {
     private NetworkUtils() {
     }
 
-    public static List<String> extractIPv6Addresses(String output) {
+    public static List<String> extractIPv6Addresses(String input) {
         List<String> ipv6Addresses = new ArrayList<>();
-        Pattern pattern = Pattern.compile("(?<=: )([0-9a-fA-F:%]+)");
-        Matcher matcher = pattern.matcher(output);
+//        Pattern pattern = Pattern.compile("(?<=: )([0-9a-fA-F:%]+)");
+        Pattern pattern = Pattern.compile("([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}");
+        Matcher matcher = pattern.matcher(input);
 
         while (matcher.find()) {
-            ipv6Addresses.add(matcher.group(1));
+            ipv6Addresses.add(matcher.group());
         }
 
         return ipv6Addresses;
